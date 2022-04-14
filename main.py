@@ -4,7 +4,6 @@
 This module contains functions to
 """
 
-import sys
 import csv
 import re
 
@@ -24,50 +23,82 @@ def valid_data():
     with open("input", newline='') as file, open("invalid", "w", newline='') as invalid, \
             open("valid", "w", newline='') as valid:
 
-        reader = csv.reader(file, delimiter=",")
+        reader = csv.reader(file, delimiter="|")
         for row in reader:
-
             try:
-                id, l_name, f_name, email, phone = row
-                pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
-                x = re.search(pattern, email)
-            except:
-                print(f'+E {x}')
-
-            try:
-                pattern2 = '(\d\d\d).(\d\d\d).(\d\d\d\d)'
-                re.search(pattern2, phone)
-            except:
-                print('+P')
-
-            try:
-                pattern3 = '[a-zA-Z]'
-                re.search(pattern3, l_name)
-                re.search(pattern3, f_name)
-            except:
-                print('+N')
-
-            try:
-                pattern4 = '[0-1000]'
-                re.search(pattern4, id)
-            except:
-                print('+I')
-            try:
-                writer = csv.writer(valid)
-                writer.writerows([row])
-                valid_files += 1
+                id, name, email, phone = row
             except:
                 writer = csv.writer(invalid)
-                writer.writerows([row])
+                writer.writerow([row])
                 invalid_files = invalid_files + 1
-            finally:
-                print(f'This is the number of valid data: {valid_files}')
-                print()
-                print(f'This is the number of invalid data: {invalid_files}')
+
+            error_code = ''
+            try:
+                id = int(id)
+            except:
+                error_code += 'I'
+
+            try:
+                pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
+                i = re.search(pattern, email)
+                if i == None:
+                    print(f'+E')
+                else:
+                    pass
+            except:
+                error
 
 
-def invalid_data():
+                pattern3 = '[a-zA-Z]' + '[,]' + '[a-zA-Z]'
+                y = re.search(pattern3, name)
+                if y == None:
+                    print('+N')
+                else:
+                    pass
+
+                pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
+                i = re.search(pattern, email)
+                if i == None:
+                    print(f'+E')
+                else:
+                   pass
+
+                pattern2 = '(\d\d\d).(\d\d\d).(\d\d\d\d)'
+                j = re.search(pattern2, phone)
+                if j == None:
+                    print('+P')
+                else:
+                    pass
+
+                writer = csv.writer(valid)
+                writer.writerow([row])
+                valid_files += 1
+
+
+
+def write_valid():
+    global valid_files
+
+    with open("valid", "w", newline='') as valid:
+        writer = csv.writer(valid)
+        writer.writerow([row])
+        valid_files += 1
+
+    '''finally:
+    print(f'This is the number of valid data: {valid_files}')
     print()
+    print(f'This is the number of invalid data: {invalid_files}')
+    print()'''
+
+def write_invalid():
+    global invalid_files
+
+    with open ("invalid", "w", newline='') as invalid:
+        writer = csv.writer(invalid)
+        writer.writerow([row])
+        invalid_files = invalid_files + 1
+
+
 
 
 def main():
