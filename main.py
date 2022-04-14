@@ -12,6 +12,7 @@ __version__ = '1.0'
 __copyright__ = "Copyright 2022.04.12, Regular Expressions"
 __github__ = "https://github.com/mattdotpy/RegEx.git"
 
+from _csv import writer
 valid_files = 0
 invalid_files = 0
 
@@ -28,46 +29,49 @@ def valid_data():
                 id, name, email, phone = row
                 name = name.split(', ')
             except:
+                error_code += '+L'
                 writer = csv.writer(invalid)
                 writer.writerow([row])
+                writer.writerow([error_code])
                 invalid_files = invalid_files + 1
+
 
             error_code = ''
             try:
-                id == int(id)
-                # writer = csv.writer(valid)
-                # writer.writerow([id, name, email, phone])
+                pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
+                i = re.search(pattern, email)
+                pattern3 = '[a-zA-Z]'
+                y = re.search(pattern3, str(name))
+                pattern2 = '(\d\d\d)+\.(\d\d\d)+\.(\d\d\d\d)'
+                j = re.search(pattern2, phone)
+                if id == int(id) or i == None or y == None or j == None:
+                    try:
+                        i == None
+                        error_code += '+E'
+                    except:
+                        pass
+                    try:
+                        y == None
+                        error_code += '+N'
+                    except:
+                        pass
+                    try:
+                        j == None
+                        error_code += '+P'
+                    except:
+                        pass
+
+                    writer = csv.writer(invalid)
+                    writer.writerow([row])
+                    writer.writerow([error_code])
+                else:
+                    writer = csv.writer(valid)
+                    writer.writerow([id, name, email, phone])
             except:
                 error_code += 'I'
 
 
-            pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
-            i = re.search(pattern, email)
-            if i == None:
-                error_code += '+E'
-            else:
-                print()
-                # writer = csv.writer(valid)
-                # writer.writerow([id, name, email, phone])
 
-
-            pattern3 = '[a-zA-Z]'
-            y = re.search(pattern3, str(name))
-            if y == None:
-                error_code += '+N'
-            else:
-                print()
-                # writer = csv.writer(valid)
-                # writer.writerow([id, name, email, phone])
-
-            pattern2 = '(\d\d\d)+\.(\d\d\d)+\.(\d\d\d\d)'
-            j = re.search(pattern2, phone)
-            if j == None:
-                error_code += '+P'
-            else:
-                print()
-                # writer = csv.writer(valid)
-                # writer.writerow([id, name, email, phone])
 
             # writer = csv.writer(valid)
             # writer.writerow([row])
@@ -79,7 +83,7 @@ def write_valid():
 
     with open("valid", "w", newline='') as valid:
         writer = csv.writer(valid)
-        # writer.writerow([row])
+        #writer.writerow([row])
         valid_files += 1
 
     '''finally:
@@ -88,14 +92,15 @@ def write_valid():
     print(f'This is the number of invalid data: {invalid_files}')
     print()'''
 
-
 def write_invalid():
     global invalid_files
 
-    with open("invalid", "w", newline='') as invalid:
+    with open ("invalid", "w", newline='') as invalid:
         writer = csv.writer(invalid)
-        # writer.writerow([row])
+        #writer.writerow([row])
         invalid_files = invalid_files + 1
+
+
 
 
 def main():
