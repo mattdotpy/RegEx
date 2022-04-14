@@ -38,15 +38,13 @@ def valid_data():
             except:
                 error_code += 'I'
 
-            try:
-                pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
-                i = re.search(pattern, email)
-                if i == None:
-                    print(f'+E')
-                else:
-                    pass
-            except:
-                error
+
+            pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
+            i = re.search(pattern, email)
+            if i == None:
+                error_code += '+E'
+            else:
+                print()
 
 
                 pattern3 = '[a-zA-Z]' + '[,]' + '[a-zA-Z]'
