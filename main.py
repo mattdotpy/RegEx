@@ -12,7 +12,6 @@ __version__ = '1.0'
 __copyright__ = "Copyright 2022.04.12, Regular Expressions"
 __github__ = "https://github.com/mattdotpy/RegEx.git"
 
-from _csv import writer
 valid_files = 0
 invalid_files = 0
 
@@ -36,8 +35,8 @@ def valid_data():
             error_code = ''
             try:
                 id == int(id)
-                writer = csv.writer(valid)
-                writer.writerow([id])
+                # writer = csv.writer(valid)
+                # writer.writerow([id, name, email, phone])
             except:
                 error_code += 'I'
 
@@ -47,8 +46,9 @@ def valid_data():
             if i == None:
                 error_code += '+E'
             else:
-                writer = csv.writer(valid)
-                writer.writerow([email])
+                print()
+                # writer = csv.writer(valid)
+                # writer.writerow([id, name, email, phone])
 
 
             pattern3 = '[a-zA-Z]'
@@ -56,16 +56,18 @@ def valid_data():
             if y == None:
                 error_code += '+N'
             else:
-                writer = csv.writer(valid)
-                writer.writerow([name])
+                print()
+                # writer = csv.writer(valid)
+                # writer.writerow([id, name, email, phone])
 
             pattern2 = '(\d\d\d)+\.(\d\d\d)+\.(\d\d\d\d)'
             j = re.search(pattern2, phone)
             if j == None:
                 error_code += '+P'
             else:
-                writer = csv.writer(valid)
-                writer.writerow([phone])
+                print()
+                # writer = csv.writer(valid)
+                # writer.writerow([id, name, email, phone])
 
             # writer = csv.writer(valid)
             # writer.writerow([row])
@@ -77,7 +79,7 @@ def write_valid():
 
     with open("valid", "w", newline='') as valid:
         writer = csv.writer(valid)
-        writer.writerow([row])
+        # writer.writerow([row])
         valid_files += 1
 
     '''finally:
@@ -86,15 +88,14 @@ def write_valid():
     print(f'This is the number of invalid data: {invalid_files}')
     print()'''
 
+
 def write_invalid():
     global invalid_files
 
-    with open ("invalid", "w", newline='') as invalid:
+    with open("invalid", "w", newline='') as invalid:
         writer = csv.writer(invalid)
-        writer.writerow([row])
+        # writer.writerow([row])
         invalid_files = invalid_files + 1
-
-
 
 
 def main():

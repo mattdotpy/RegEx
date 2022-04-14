@@ -1,20 +1,7 @@
-1
-"['Matt', 'Meyer']"
-111.222.3332
-1
-dejohns2@wsc.edu
-"['Johnson', 'Debbie']"
-111.222.3333
-1
-['Johnson']
-dejohns2@wsc.edu
-"['Johnson', 'Debbie']"
-5
-dejohns2@wsc.edu
-"['Johnson', 'Debbie']"
-2
-mameye06@wsc.edu
-"['Meyer', 'Matthew']"
-2
-mameye06@wsc.edu
-"['Meyer', 'Matthew']"
+1,"['Matt', 'Meyer']",mameye06@wsc.com,111.222.3332
+1,"['Johnson', 'Debbie']",dejohns2@wsc.edu,111.222.3333
+1,['Johnson'],dejohns2@gmail.com,1112223333
+abc,"['Johnson', 'Debbie']",dejohns2@wsc.edu,111-222-3333
+5,"['Johnson', 'Debbie']",dejohns2@wsc.edu,111-222-3333
+2,"['Meyer', 'Matthew']",mameye06@wsc.edu,111-222-3333
+2,"['Meyer', 'Matthew']",mameye06@wsc.edu,111-222-3333
