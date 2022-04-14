@@ -27,6 +27,7 @@ def valid_data():
         for row in reader:
             try:
                 id, name, email, phone = row
+                name = name.split(', ')
             except:
                 writer = csv.writer(invalid)
                 writer.writerow([row])
@@ -34,7 +35,9 @@ def valid_data():
 
             error_code = ''
             try:
-                id = int(id)
+                id == int(id)
+                writer = csv.writer(valid)
+                writer.writerow([id])
             except:
                 error_code += 'I'
 
@@ -44,34 +47,29 @@ def valid_data():
             if i == None:
                 error_code += '+E'
             else:
-                print()
-
-
-                pattern3 = '[a-zA-Z]' + '[,]' + '[a-zA-Z]'
-                y = re.search(pattern3, name)
-                if y == None:
-                    print('+N')
-                else:
-                    pass
-
-                pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
-                i = re.search(pattern, email)
-                if i == None:
-                    print(f'+E')
-                else:
-                   pass
-
-                pattern2 = '(\d\d\d).(\d\d\d).(\d\d\d\d)'
-                j = re.search(pattern2, phone)
-                if j == None:
-                    print('+P')
-                else:
-                    pass
-
                 writer = csv.writer(valid)
-                writer.writerow([row])
-                valid_files += 1
+                writer.writerow([email])
 
+
+            pattern3 = '[a-zA-Z]'
+            y = re.search(pattern3, str(name))
+            if y == None:
+                error_code += '+N'
+            else:
+                writer = csv.writer(valid)
+                writer.writerow([name])
+
+            pattern2 = '(\d\d\d)+\.(\d\d\d)+\.(\d\d\d\d)'
+            j = re.search(pattern2, phone)
+            if j == None:
+                error_code += '+P'
+            else:
+                writer = csv.writer(valid)
+                writer.writerow([phone])
+
+            # writer = csv.writer(valid)
+            # writer.writerow([row])
+            # valid_files += 1
 
 
 def write_valid():
