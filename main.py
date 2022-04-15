@@ -38,6 +38,7 @@ def valid_data():
 
             error_code = ''
             try:
+                id == int(id)
                 pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
                 i = re.search(pattern, email)
                 pattern3 = '[a-zA-Z]'
@@ -45,6 +46,13 @@ def valid_data():
                 pattern2 = '(\d\d\d)+\.(\d\d\d)+\.(\d\d\d\d)'
                 j = re.search(pattern2, phone)
                 if id == int(id) or i == None or y == None or j == None:
+                    '''if i == None:
+                        error_code += '+E'
+                        if y == None:
+                            error_code += '+N'
+                            if j == None:
+                                error_code += '+P'
+                    '''
                     try:
                         i == None
                         error_code += '+E'
