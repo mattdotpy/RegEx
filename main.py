@@ -17,26 +17,62 @@ valid_files = 0
 invalid_files = 0
 
 
-def valid_data():
+def validate_data():
     global valid_files, invalid_files
 
     with open("input_file", newline='') as file, open("invalid_file", "w", newline='') as invalid_file, \
             open("valid_file", "w", newline='') as valid_file:
 
         reader = csv.reader(file, delimiter="|")
+        invalid_writer = csv.writer(invalid_file)
+        valid_writer = csv.writer(valid_file)
         for row in reader:
             try:
                 id, name, email, phone = row
                 name = name.split(', ')
             except:
-                error_code += '+L'
-                writer = csv.writer(invalid_file)
-                writer.writerow([row])
-                writer.writerow([error_code])
+                invalid_writer.writerow(['L', row])
                 invalid_files = invalid_files + 1
+                continue
 
 
             error_code = ''
+            if id == int(id):
+                break
+            else:
+                error_code += 'I'
+                invalid_writer.writerow(['+I', row])
+
+            try:
+                pattern3 = '[a-zA-Z]'
+                n = re.search(pattern3, str(name))
+                if n == None:
+                    error_code += '+N'
+                    invalid_writer.writerow(['+N', row])
+            except:
+                break
+
+            try:
+                pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
+                e = re.search(pattern, email)
+                if e == None:
+                    error_code += '+N'
+                    invalid_writer.writerow(['+E', row])
+            except:
+                break
+
+            try:
+                pattern3 = '[a-zA-Z]'
+                p = re.search(pattern3, str(name))
+                if p == None:
+                    error_code += '+N'
+                    invalid_writer.writerow(['+P', row])
+            except:
+                break
+
+
+
+'''
             try:
                 id == int(id)
                 pattern = '[a-zA-Z0-9]+@[a-zA-Z]+\.(edu)'
@@ -46,13 +82,13 @@ def valid_data():
                 pattern2 = '(\d\d\d)+\.(\d\d\d)+\.(\d\d\d\d)'
                 j = re.search(pattern2, phone)
                 if id == int(id) or i == None or y == None or j == None:
-                    '''if i == None:
+                    if i == None:
                         error_code += '+E'
                         if y == None:
                             error_code += '+N'
                             if j == None:
                                 error_code += '+P'
-                    '''
+                    
                     try:
                         i == None
                         error_code += '+E'
@@ -85,13 +121,13 @@ def valid_data():
             # writer.writerow([row])
             # valid_files += 1
 
-
+'''
 def write_valid():
     global valid_files
 
     with open("valid", "w", newline='') as valid:
-        writer = csv.writer(valid_file)
-        #writer.writerow([row])
+        # writer = csv.writer(valid_file)
+        # writer.writerow([row])
         valid_files += 1
 
     '''finally:
@@ -112,7 +148,7 @@ def write_invalid():
 
 
 def main():
-    valid_data()
+    validate_data()
 
 
 if __name__ == '__main__':

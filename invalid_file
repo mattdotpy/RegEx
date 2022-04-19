@@ -1,12 +1,4 @@
-"['1,Johnson, Debbie,dejohns2@wsc.edu,111.222.3333']"
-+L
-"['1', 'Johnson', 'dejohns2@gmail.com', '1112223333']"
-+E+N+P
-"['Johnson, Debbie', 'dejohns2@wsc.edu', '111-222-3333']"
-I+L
-"['2', 'Meyer,Matthew', 'mameye06@wsc.edu', '111-222-3333']"
-+E+N+P
-"['3,Meyer,Matt,mameye06@wsc.edu,111.222.3333']"
-+E+N+P+L
-"['3,Meyer,Matt,mameye06@wsc.edu,111.222.3333']"
-+E+N+P
++I,"['1', 'Matt,Meyer', 'mameye06@wsc.edu', '111.222.3332']"
+L,"['1,Johnson, Debbie,dejohns2@wsc.edu,111.222.3333']"
++I,"['1', 'Johnson', 'dejohns2@gmail.com', '1112223333']"
++E,"['1', 'Johnson', 'dejohns2@gmail.com', '1112223333']"
