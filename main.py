@@ -20,8 +20,8 @@ invalid_files = 0
 def valid_data():
     global valid_files, invalid_files
 
-    with open("input", newline='') as file, open("invalid", "w", newline='') as invalid, \
-            open("valid", "w", newline='') as valid:
+    with open("input_file", newline='') as file, open("invalid_file", "w", newline='') as invalid_file, \
+            open("valid_file", "w", newline='') as valid_file:
 
         reader = csv.reader(file, delimiter="|")
         for row in reader:
@@ -30,7 +30,7 @@ def valid_data():
                 name = name.split(', ')
             except:
                 error_code += '+L'
-                writer = csv.writer(invalid)
+                writer = csv.writer(invalid_file)
                 writer.writerow([row])
                 writer.writerow([error_code])
                 invalid_files = invalid_files + 1
@@ -69,11 +69,11 @@ def valid_data():
                     except:
                         pass
 
-                    writer = csv.writer(invalid)
+                    writer = csv.writer(invalid_file)
                     writer.writerow([row])
                     writer.writerow([error_code])
                 else:
-                    writer = csv.writer(valid)
+                    writer = csv.writer(valid_file)
                     writer.writerow([id, name, email, phone])
             except:
                 error_code += 'I'
@@ -90,7 +90,7 @@ def write_valid():
     global valid_files
 
     with open("valid", "w", newline='') as valid:
-        writer = csv.writer(valid)
+        writer = csv.writer(valid_file)
         #writer.writerow([row])
         valid_files += 1
 
