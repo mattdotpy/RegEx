@@ -1,4 +1,6 @@
 L,"['1,Johnson, Debbie,dejohns2@wsc.edu,111.222.3333']"
-+I,"['abc', 'Johnson, Debbie', 'dejohns2@wsc.edu', '111-222-3333']"
++N+E+P,"['1', 'Johnson', 'dejohns2@gmail.com', '1112223333']"
+I+N+P,"['abc', 'Johnson, Debbie', 'dejohns2@wsc.edu', '111-222-3333']"
 L,"['Johnson, Debbie', 'dejohns2@wsc.edu', '111-222-3333']"
++P,"['2', 'Meyer,Matthew', 'mameye06@wsc.edu', '111-222-3333']"
 L,"['3,Meyer,Matt,mameye06@wsc.edu,111.222.3333']"
