@@ -37,18 +37,18 @@ def validate_data():
 
 
             error_code = ''
-            if id == int(id):
-                break
-            else:
+            try:
+                if id == int(id):
+                    break
+            except:
+                print('else')
                 error_code += 'I'
-
 
             try:
                 pattern3 = '[a-zA-Z]'
                 n = re.search(pattern3, str(name))
                 if n == None:
                     error_code += '+N'
-
             except:
                 break
 
@@ -57,7 +57,6 @@ def validate_data():
                 e = re.search(pattern, email)
                 if e == None:
                     error_code += '+N'
-
             except:
                 break
 
@@ -66,7 +65,6 @@ def validate_data():
                 p = re.search(pattern3, str(name))
                 if p == None:
                     error_code += '+N'
-
             except:
                 break
 
