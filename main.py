@@ -12,7 +12,7 @@ __version__ = '1.0'
 __copyright__ = "Copyright 2022.04.12, Regular Expressions"
 __github__ = "https://github.com/mattdotpy/RegEx.git"
 
-from _csv import writer
+
 valid_files = 0
 invalid_files = 0
 
@@ -41,14 +41,14 @@ def validate_data():
                 break
             else:
                 error_code += 'I'
-                invalid_writer.writerow(['+I', row])
+
 
             try:
                 pattern3 = '[a-zA-Z]'
                 n = re.search(pattern3, str(name))
                 if n == None:
                     error_code += '+N'
-                    invalid_writer.writerow(['+N', row])
+
             except:
                 break
 
@@ -57,7 +57,7 @@ def validate_data():
                 e = re.search(pattern, email)
                 if e == None:
                     error_code += '+N'
-                    invalid_writer.writerow(['+E', row])
+
             except:
                 break
 
@@ -66,7 +66,7 @@ def validate_data():
                 p = re.search(pattern3, str(name))
                 if p == None:
                     error_code += '+N'
-                    invalid_writer.writerow(['+P', row])
+
             except:
                 break
 
