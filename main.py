@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-This module contains functions to
+This module contains functions to reading and writing invalid and valid data to different files.
 """
 
 import csv
@@ -12,12 +12,20 @@ __version__ = '1.0'
 __copyright__ = "Copyright 2022.04.12, Regular Expressions"
 __github__ = "https://github.com/mattdotpy/RegEx.git"
 
-
+# These will be global variables we use in the validate_data function
 valid_files = 0
 invalid_files = 0
 
 
 def validate_data():
+    """
+    We open three files at the same time for reading and writing, and created a csv reader and writer.
+    We have a for loop to unpack the data in the input file and split name to get the first and last name separated.
+    There is a try and except for each validation of the data.
+    If it is valid we write to the valid file and if it is invalid we write to the invalid file.
+    Error codes are provided for each row.
+    Print out how many invalid and valid data there are.
+    """
     global valid_files, invalid_files
 
     # Open three files on to read from and two to write to
@@ -88,6 +96,9 @@ def validate_data():
 
 
 def main():
+    """
+    We call the validate_data function to run our program inside of main.
+    """
     validate_data()
 
 
